@@ -32,7 +32,7 @@ function App() {
   const sorting = (col) => {
     if (order === "ASC") {
       // col = "name" & col = "price" два параметра отбора, при клике на button, мы определяем по какому параметру массива будет определяться сортировка
-      if (col = "name") {
+      if (col === "name") {
         // для col = "name" мы делаем примитивную сортировку по алфавиту которая находится ниже
         // сравнивая два оператора a, b мы понимаем что нам нужно сравнивать не все данные, которые в нем прописанны, а только имя, поэтому добавляем к оператору (а) значение value, где лежит уже знакомый нам name который как параметр прописан в col откуда мы его достаем и всю связь преобразовываем в строку для корректного чтения
         const sorted = [...sortcategory].sort((a, b) =>
@@ -41,7 +41,7 @@ function App() {
         setSortCategory(sorted)
         setOrder("DSC")
       }
-      else if (col = "price") {
+      else if (col === "price") {
         // здесь тоже самое делаем для цены, только через числовую сортировку
         const sorted = [...sortcategory].sort((a, b) => {
           return a.value[col].toUpperCase() - b.value[col].toUpperCase()
@@ -54,14 +54,14 @@ function App() {
     }
     if (order === "DSC") {
       // и тоже самое для обратного порядка (от большего к меньшему, от Я до А)
-      if (col = "name") {
+      if (col === "name") {
         const sorted = [...sortcategory].sort((a, b) =>
           a.value[col].toLowerCase() > b.value[col].toLowerCase() ? 1 : -1)
         console.log(sorted)
         setSortCategory(sorted)
         setOrder("ASC")
       }
-      else if (col = "price") {
+      else if (col === "price") {
 
         const sorted = [...sortcategory].sort((a, b) => {
           return b.value[col].toUpperCase() - a.value[col].toUpperCase()
