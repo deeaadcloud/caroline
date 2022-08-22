@@ -31,16 +31,19 @@ function App() {
 
   const sorting = (col) => {
     if (order === "ASC") {
+      // col = "name" & col = "price" два параметра отбора, при клике на button, мы определяем по какому параметру массива будет определяться сортировка
       if (col = "name") {
-        const sorted = sortcategory.sort((a, b) =>
+        // для col = "name" мы делаем примитивную сортировку по алфавиту которая находится ниже
+        // сравнивая два оператора a, b мы понимаем что нам нужно сравнивать не все данные, которые в нем прописанны, а только имя, поэтому добавляем к оператору (а) значение value, где лежит уже знакомый нам name который как параметр прописан в col откуда мы его достаем и всю связь преобразовываем в строку для корректного чтения
+        const sorted = [...sortcategory].sort((a, b) =>
           a.value[col].toUpperCase() < b.value[col].toUpperCase() ? 1 : -1)
-        console.log(sorted)
+        console.log()
         setSortCategory(sorted)
         setOrder("DSC")
       }
-      if (col = "price") {
-
-        const sorted = sortcategory.sort((a, b) => {
+      else if (col = "price") {
+        // здесь тоже самое делаем для цены, только через числовую сортировку
+        const sorted = [...sortcategory].sort((a, b) => {
           return a.value[col].toUpperCase() - b.value[col].toUpperCase()
         })
         console.log(sorted)
@@ -50,16 +53,17 @@ function App() {
       }
     }
     if (order === "DSC") {
+      // и тоже самое для обратного порядка (от большего к меньшему, от Я до А)
       if (col = "name") {
-        const sorted = sortcategory.sort((a, b) =>
+        const sorted = [...sortcategory].sort((a, b) =>
           a.value[col].toLowerCase() > b.value[col].toLowerCase() ? 1 : -1)
         console.log(sorted)
         setSortCategory(sorted)
         setOrder("ASC")
       }
-      if (col = "price") {
+      else if (col = "price") {
 
-        const sorted = sortcategory.sort((a, b) => {
+        const sorted = [...sortcategory].sort((a, b) => {
           return b.value[col].toUpperCase() - a.value[col].toUpperCase()
         })
         console.log(sorted)
@@ -80,7 +84,6 @@ function App() {
     else {
       let newSort = [...allItems].filter(item => item.value.category == id.id)
       setSortCategory(newSort)
-      console.log(newSort)
 
     }
   }
